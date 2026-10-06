@@ -1,0 +1,43 @@
+?- house = house.
+true.
+Both terms are the same, so they unify.
+
+?- house = abc.
+false.
+The two atoms are different, so they cannot unify.
+
+?- edge(a,b) = edge(C,b).
+C = a.
+The structures match, so C takes the value a.
+
+?- edge(a,d) = edge(C,B).
+C = a,
+B = d.
+The structures match, so C becomes a and B becomes d.
+
+?- edge(C,B) = edge(a,d).
+C = a,
+B = d.
+The variables match the values in the second structure, so C = a and B = d.
+
+?- edge(A,f(g,h)) = edge(a,B).
+A = a,
+B = f(g,h).
+The structures match, so A becomes a and B becomes f(g,h).
+
+?- edge(A,A) = edge(b,c).
+false.
+A must have one value, but here it would need to be both b and c, so unification fails.
+
+?- edge(A,A) = edge(b,b).
+A = b.
+Both positions have the same value b, so A can unify with b.
+
+?- A = B, B = f.
+A = f,
+B = f.
+A and B are linked, so when B becomes f, A also becomes f.
+
+?- A = B, B = f, A = e.
+false.
+A and B become f, so A cannot also be e.
